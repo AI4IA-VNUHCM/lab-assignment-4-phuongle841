@@ -51,6 +51,35 @@ void Ex3(int in_arr[], int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(in_arr,a,n,n);
 	//Your codes here
+	int tg;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j <n; j++)
+		{
+			if (a[i][i]>a[j][j])
+			{
+				tg=a[i][i];
+				a[i][i]=a[j][j];
+				a[j][j]=tg;
+			}
+			
+		}
+		
+	}
+	int tg2;
+	for (int i = n-1; i > 0; i--)
+	{
+		for (int j = n-i; j<n ; j++)
+		{
+			if (a[i][n-1-i]<a[n-1-j][j])
+			{
+				tg2=a[i][n-1-i];
+				a[i][n-1-i]=a[n-1-j][j];
+				a[n-1-j][j]=tg2;
+			}
+		}	
+		
+	}
 	
 	printArray(a,n,n);
 }
@@ -68,3 +97,5 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
+//gcc .\src\Exercise3.c -o .\bin\ex3.exe
+// .\bin\\ex3.exe 4 10 21 12 53 64 53 86 72 68 99 10 11 12 13 14 15

@@ -49,21 +49,84 @@ void printArray(int a[SIZE][SIZE], int m, int n)
 
 void insertRow(int arr[], int a[SIZE][SIZE],int rowIndex, int m, int n){
 	//Your codes here
+	int tg;
+	for (int j = m; j > rowIndex; j--)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			tg=a[j][i];
+			a[j][i]=a[j-1][i];
+			a[j-1][i]=tg;
+		}	
+	}
+	for (int i = 0; i < n; i++)
+	{
+		a[rowIndex][i]=arr[i];
+	}
 	
 }
 
 void removeRow(int a[SIZE][SIZE], int rowIndex, int m, int n){
 	//Your codes here
+	for (int i = 0; i < n; i++)
+	{
+		a[rowIndex][i]=0;
+	}
+	int tg;
+	for (int j = rowIndex; j < n; j++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			tg=a[j][i];
+			a[j][i]=a[j+1][i];
+			a[j+1][i]=tg;
+		}
+		
+	}
+	
+	
 	
 }
 
 void insertCol(int arr[], int a[SIZE][SIZE],int colIndex, int m, int n){
 	//Your codes here
+	int tg;
+	for (int i = n; i > colIndex; i--)
+	{
+		for (int j = 0; i < n; i++)
+		{
+			tg=a[j][j];
+			a[j][i]=a[j][i+1];
+			a[j][i+1]=tg;
+		}
+		
+	}
+	for (int j = 0; j < n; j++)
+	{
+		a[j][colIndex]=arr[j];
+	}
 	
 }
 
 void removeCol(int a[SIZE][SIZE], int colIndex, int m, int n){
 	//Your codes here
+
+	for (int j = 0; j < n; j++)
+	{
+		a[j][colIndex]=0;
+	}
+	int tg;
+	for (int i = colIndex; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			tg=a[j][i];
+			a[j][i]=a[j][i+1];
+			a[j][i+1]=tg;
+		}
+		
+	}
+	
 	
 }
 
@@ -126,3 +189,5 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
+//gcc .\src\Exercise4.c -o .\bin\ex4.exe
+//.\bin\\ex4.exe 5 4 1 2 1 2 3 4 10 21 12 53 64 53 86 72 68 99 10 11 12 13 14 15 16 17 18 19

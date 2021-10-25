@@ -15,9 +15,22 @@ ______________________________________
 #include <stdlib.h>
 #include <math.h>
 
-void Ex1(int n){
+int C(int k, int n) {
+    if (k == 0 || k == n) return 1;
+    if (k == 1) return n;
+    return C(k - 1, n - 1) + C(k, n - 1);
+}
+void Ex1(int n)
+{
 	//Your codes here
-    
+	for (int i = 0; i < n+1; i++)
+	{
+		for (int j = 0; j<=i; j++)
+		{
+		printf("%d ",C(j,i));
+		}
+		printf("\n");
+	}
 }
 
 int main(int argc, char *argv[]) {
@@ -27,3 +40,5 @@ int main(int argc, char *argv[]) {
 	Ex1(testcase);
 	return 0;
 }
+//gcc .\src\Exercise1.c -o .\bin\ex1.exe
+//.\bin\\ex1.exe 3
