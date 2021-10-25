@@ -37,7 +37,23 @@ void Ex5(int arr[], int m, int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(arr,a,m,n);
 	//Your codes here
-
+int MaxOfAll=1;
+for (int j = 0; j < n; j++)
+{
+	int Min=a[j][0];
+	for (int i =1; i < n; i++)
+	{
+		if (Min>a[j][i])
+		{
+			Min=a[j][i];
+		}	
+	}
+	if (Min>MaxOfAll)
+	{
+		MaxOfAll=Min;
+	}	
+}
+printf("%d",MaxOfAll);
 }
 
 int main(int argc, char *argv[]) {
@@ -54,3 +70,5 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
+//gcc .\src\Exercise5.c -o .\bin\ex5.exe
+//.\bin\\ex5.exe 5 4 10 21 12 53 64 53 86 72 68 99 10 11 12 13 14 15 16 17 18 19

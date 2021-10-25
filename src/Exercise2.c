@@ -40,7 +40,7 @@ void Array2Dconverter(int arr[], int a[SIZE][SIZE], int m, int n)
 void printArray(int a[SIZE][SIZE], int m, int n)
 {
 	int row, column;
-
+	
 	for (row = 0; row <= (m - 1); row ++){
 		for (column = 0; column <= (n - 1); column ++){
 			printf("%d ", a[row][column]);
@@ -48,13 +48,52 @@ void printArray(int a[SIZE][SIZE], int m, int n)
 		printf("\n");
 	}
 }
-
 void Ex2(int arr[], int m, int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(arr,a,m,n);
 	//Your codes here
-
+	int tg;
+	//printf("%d",a[3][2]);
+	for (int i=0; i < n; i++)
+	{
+		if (i%2!=0)
+		{
+			for (int ii = 0; ii < n; ii++)
+			{
+				for (int j = ii+1; j < n+1; j++)
+				{
+					if (a[ii][i]>a[j][i])
+					{
+						tg=a[ii][i];
+						a[ii][i]=a[j][i];
+						a[j][i]=tg;
+					}
+				
+				}
+			
+			}
+		}
+		else
+		{
+			for (int ii = 0; ii < n; ii++)
+			{
+				for (int j = ii+1; j < n+1; j++)
+				{
+					if (a[ii][i]<a[j][i])
+					{
+						tg=a[ii][i];
+						a[ii][i]=a[j][i];
+						a[j][i]=tg;
+					}
+				
+				}
+			
+			}
+		}
+	}
+	
 	printArray(a, m, n);
+	
 }
 
 int main(int argc, char *argv[]) {
@@ -71,3 +110,5 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
+//gcc .\src\Exercise2.c -o .\bin\ex2.exe
+//.\bin\\ex2.exe 5 4 10 21 12 53 64 53 86 72 68 99 10 11 12 13 14 15 16 17 18 19
